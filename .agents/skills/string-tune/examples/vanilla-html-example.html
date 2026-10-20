@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StringTune Demonstration</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f0f11;
+      color: #f3f3f3;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(15, 15, 17, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .logo {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      font-size: 1.25rem;
+    }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+      will-change: transform;
+    }
+    .hero p {
+      max-width: 600px;
+      color: #999;
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .button-group {
+      display: flex;
+      gap: 1rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.75rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s ease-out;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #ffffff;
+      color: #000000;
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .section {
+      min-height: 80vh;
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 2.5rem;
+      transition: border-color 0.3s;
+    }
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">STRINGTUNE</div>
+    <a href="#demo" class="btn btn-secondary" string="magnetic" string-cursor-target="target">Explore</a>
+  </header>
+
+  <!-- Hero Section with Scroll Progress and Parallax -->
+  <section class="hero" string="progress" string-id="hero">
+    <h1 string="parallax" string-factor="0.35">
+      Crafting Motion & Polish
+    </h1>
+    <p string="parallax" string-factor="0.15">
+      High-performance animations powered by @fiddle-digital/string-tune.
+    </p>
+    <div class="button-group">
+      <a href="#demo" class="btn btn-primary" string="magnetic">Get Started</a>
+      <a href="#features" class="btn btn-secondary" string="magnetic">Documentation</a>
+    </div>
+  </section>
+
+  <!-- Grid with Spotlight & Parallax Cards -->
+  <section id="demo" class="section" string="progress" string-id="features">
+    <h2>Interactive Modules</h2>
+    <div class="card-grid">
+      <div class="card" string="parallax" string-factor="0.2">
+        <h3>Parallax Dynamics</h3>
+        <p>Scroll-driven multi-layer depth with declarative HTML factors.</p>
+      </div>
+      <div class="card" string="magnetic">
+        <h3>Magnetic Pull</h3>
+        <p>Smooth cursor attraction for interactive call-to-actions.</p>
+      </div>
+      <div class="card" string="parallax" string-factor="-0.15">
+        <h3>Progress Tracking</h3>
+        <p>Lightweight viewport tracking without frame drops.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- StringTune Runtime -->
+  <script src="../../assets/string-tune.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize StringTune from global script or module
+      const ST = window.StringTune?.StringTune || window.StringTune;
+      if (!ST) {
+        console.warn('StringTune failed to load');
+        return;
+      }
+
+      const instance = ST.getInstance();
+      
+      // Load modules
+      if (ST.StringParallax) instance.use(ST.StringParallax);
+      if (ST.StringMagnetic) instance.use(ST.StringMagnetic);
+      if (ST.StringProgress) instance.use(ST.StringProgress);
+      if (ST.StringCursor) instance.use(ST.StringCursor);
+
+      // Start runtime loop at 60 FPS
+      instance.start(60);
+      console.log('StringTune runtime initialized successfully');
+    });
+  </script>
+</body>
+</html>

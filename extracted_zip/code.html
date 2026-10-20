@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Gared Matthew - Portfolio</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              black: '#0D0D0D',
+              gray: '#7A7A7A',
+              light: '#F8F9FA',
+              border: '#E5E5E5'
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Typography & Gradients Stylesheet -->
+<style data-purpose="typography">
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+    
+    body {
+      font-family: 'Plus+Jakarta Sans', sans-serif;
+      background-color: #FAFAFA;
+      color: #121212;
+      overflow-x: hidden;
+    }
+
+    .metallic-title {
+      background: linear-gradient(180deg, #1A1A1A 0%, #4A4A4A 35%, #8E8E8E 60%, #BDBDBD 85%, #E5E5E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-metallic-title {
+      background: linear-gradient(180deg, #FFFFFF 0%, #999999 50%, #444444 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .letter-spacing-widest {
+      letter-spacing: 0.18em;
+    }
+  </style>
+<!-- Component Layout Styling -->
+<style data-purpose="component-styles">
+    .pill-btn {
+      border: 1px solid #D6D6D6;
+      border-radius: 9999px;
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .pill-btn:hover {
+      border-color: #000000;
+    }
+
+    .circle-btn {
+      border: 1px solid #D1D1D1;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .circle-btn:hover {
+      border-color: #000;
+      transform: scale(1.05);
+    }
+  </style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" data-snapdom="injected-import"></head>
+<body class="antialiased text-[#111]">
+<!-- BEGIN: Navigation -->
+<header class="w-full pt-8 pb-4 px-6 md:px-14 max-w-[1400px] mx-auto flex items-center justify-between" data-purpose="site-navigation">
+<!-- Brand Wordmark -->
+<a class="font-extrabold text-xl tracking-tight text-black flex items-center" href="#">
+      PORTFOLIO<span class="inline-block w-1.5 h-1.5 bg-black rounded-full ml-0.5"></span>
+</a>
+<!-- Center Navigation Links -->
+<nav class="hidden md:flex items-center gap-1.5 p-1 bg-white border border-[#E2E2E2] rounded-full shadow-sm text-xs font-semibold tracking-wider text-neutral-600">
+<a class="px-5 py-2 rounded-full border border-neutral-300 text-black hover:border-black transition" href="#home">HOME</a>
+<a class="px-5 py-2 rounded-full border border-transparent hover:border-neutral-200 transition" href="#about">ABOUT ME</a>
+<a class="px-5 py-2 rounded-full border border-transparent hover:border-neutral-200 transition" href="#services">SERVICES</a>
+<a class="px-5 py-2 rounded-full border border-transparent hover:border-neutral-200 transition" href="#projects">PROJECTS</a>
+</nav>
+<!-- Right Social & Menu Links -->
+<div class="flex items-center gap-2 p-1.5 bg-white border border-[#E2E2E2] rounded-full shadow-sm">
+<a class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700" href="#" title="Dribbble">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.65 6.06c-.84.23-2.07.47-3.55.57-.45-1.07-.98-2.12-1.6-3.13 1.95.53 3.59 1.49 5.15 2.56zM12 3.86c.69 1.09 1.28 2.24 1.76 3.4-1.95.27-4.22.37-6.55.22.95-1.78 2.7-3.12 4.79-3.62zM5.3 5.92c2.19.14 4.38.04 6.26-.23-.27.67-.57 1.34-.88 2.01-3.33 1.11-6.72 1.36-8.52 1.43.34-1.28 1.45-2.4 3.14-3.21zM3.86 11c1.88-.07 5.13-.3 8.35-1.39.29.68.56 1.37.8 2.07-3.66 1.31-7.23 3.65-8.8 5.75-.41-.78-.71-1.63-.82-2.52.17-.67.33-2.57.47-3.91zm1.78 7.37c1.47-1.97 4.76-4.14 8.21-5.38.64 1.7 1.09 3.44 1.33 5.16-3.4.9-6.9.7-9.54.22zm11.23-.74c-.22-1.57-.63-3.16-1.23-4.71 1.33-.08 2.45-.07 3.32.04-.32 1.92-1.12 3.57-2.09 4.67zm1.88-6.19c-.84-.1-1.95-.12-3.22-.05-.22-.65-.47-1.3-.74-1.93 1.39-.1 2.56-.31 3.41-.53.48.74.83 1.57.55 2.51z"></path></svg>
+</a>
+<a class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700" href="#" title="Instagram">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect height="18" rx="5" ry="5" width="18" x="3" y="3"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+</a>
+<a class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 font-bold text-xs" href="#" title="Behance">
+        Bē
+      </a>
+<a class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 font-semibold text-xs" href="#" title="LinkedIn">
+        in
+      </a>
+<button aria-label="Open Menu" class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 ml-1">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="4" x2="20" y1="7" y2="7"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="17" y2="17"></line></svg>
+</button>
+</div>
+</header>
+<!-- END: Navigation -->
+<!-- BEGIN: Hero Section -->
+<main class="relative max-w-[1400px] mx-auto px-6 md:px-14 pt-8 md:pt-14 pb-20 overflow-hidden" data-purpose="hero-section" id="home">
+<!-- Big Title Header -->
+<div class="text-center w-full mb-6 md:mb-10 relative z-0 select-none pointer-events-none"><h1 class="text-[9.5vw] md:text-[8rem] lg:text-[9.5rem] font-extrabold uppercase leading-[0.85] tracking-tight metallic-title">EXPLORE MY<br>PORTFOLIO</h1></div>
+<!-- Center Headshot & Symmetrical Content Grid -->
+<div class="relative grid grid-cols-1 md:grid-cols-12 items-center mt-2 md:-mt-6">
+<!-- Left Column: Designer info & Arrow -->
+<div class="md:col-span-3 flex flex-col items-start md:items-start pl-2 md:pl-6 order-2 md:order-1 pt-6 md:pt-0">
+<span class="text-xs font-bold tracking-wider uppercase text-neutral-800 mb-6">DESIGNER EST.2000</span>
+<a class="circle-btn w-14 h-14 md:w-16 md:h-16 border-neutral-300" href="#about">
+<svg class="w-5 h-5 text-neutral-800 transform rotate-45" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</div>
+<!-- Center Column: Stylized Black and White Headshot -->
+<div class="md:col-span-6 flex justify-center order-1 md:order-2 relative z-10 -mt-16 md:-mt-36"><div class="relative w-[320px] h-[400px] md:w-[480px] md:h-[580px] flex items-end justify-center" style="mask-image: linear-gradient(black 65%, transparent 100%);"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcazn9gQbymIOQnywium-Vsjyj8kV2UoFlH63M0RX3nV0Z_2LZD-rugA9K0ORrfrFxJEkOBrlAyB0HWB8cm7KhZp-5sNgQuhXyGzJ9WmwvjEDhYw_g3BAr4A9j5phGh8JE5Rka_2e_B_o51jY55CQt5wfTPsFDGRvU2gaHKRu4gOOZD_FnQOszLiRDTh3La-RZzzHeFwfFY3XPZ9ikMq55oZ_xP2A95rzfUQE8WkHuIogtKLU-9zuSV9QywgCsVw4Btw" alt="Hero Portrait" class="w-full h-full object-contain object-bottom pointer-events-none select-none"></div></div>
+<!-- Right Column: Pitch and Disciplines -->
+<div class="md:col-span-3 flex flex-col items-start md:items-end text-left md:text-right order-3 pt-6 md:pt-0 pr-2 md:pr-6 space-y-12">
+<!-- Pitch Quote -->
+<p class="text-[11px] md:text-xs uppercase font-medium leading-relaxed tracking-wider text-neutral-700 max-w-[210px]">
+          I AM PASSIONATE ABOUT CREATING WEBSITES THAT STAND OUT FROM THE CROWD.
+        </p>
+<!-- Service List -->
+<div class="flex flex-col space-y-3.5 text-[11px] md:text-xs font-semibold tracking-widest text-neutral-600 uppercase">
+<div class="hover:text-black transition">UI/UX</div>
+<div class="hover:text-black transition">WEB DESIGN</div>
+<div class="hover:text-black transition">LANDING PAGE</div>
+<div class="hover:text-black transition">UI DESIGN FIGMA</div>
+<div class="hover:text-black transition">EXPERT WEBFLOW</div>
+</div>
+</div>
+</div>
+</main>
+<!-- END: Hero Section -->
+<!-- BEGIN: About Section -->
+<section class="max-w-[1400px] mx-auto px-6 md:px-14 py-16" data-purpose="about-section" id="about">
+<!-- Header with Arrow and Quote -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-14">
+<div class="flex items-center gap-3">
+<h2 class="text-6xl md:text-8xl font-black tracking-tight text-neutral-900 uppercase">ABOUT</h2>
+<a class="circle-btn w-12 h-12 md:w-14 md:h-14 border-neutral-300" href="#services">
+<svg class="w-5 h-5 text-neutral-800 transform -rotate-45" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</div>
+<p class="max-w-md text-xs md:text-[13px] uppercase font-medium leading-relaxed tracking-wider text-neutral-600">
+        “GARED MATTHEW IS A TALENTED FREELANCE DESIGNER &amp; DEVELOPER, KNOWN FOR HIS CREATIVE PROWESS AND TECHNICAL EXPERTISE.”
+      </p>
+</div>
+<!-- Metrics Stat Box Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 border border-neutral-200 divide-y md:divide-y-0 md:divide-x divide-neutral-200 rounded-none bg-white">
+<div class="p-8 md:p-12 flex flex-col justify-center items-start">
+<span class="text-5xl md:text-6xl font-light tracking-tight text-neutral-900 mb-2">5M+</span>
+<span class="text-[11px] font-bold tracking-widest uppercase text-neutral-400">SUCCESS PROJECT</span>
+</div>
+<div class="p-8 md:p-12 flex flex-col justify-center items-start">
+<span class="text-5xl md:text-6xl font-light tracking-tight text-neutral-900 mb-2">3K+</span>
+<span class="text-[11px] font-bold tracking-widest uppercase text-neutral-400">PRODUCT LAUNCHES</span>
+</div>
+<div class="p-8 md:p-12 flex flex-col justify-center items-start">
+<span class="text-5xl md:text-6xl font-light tracking-tight text-neutral-900 mb-2">24+</span>
+<span class="text-[11px] font-bold tracking-widest uppercase text-neutral-400">YEARS EXPERIENCE</span>
+</div>
+</div>
+</section>
+<!-- END: About Section -->
+<!-- BEGIN: Featured Project Section -->
+<section class="max-w-[1400px] mx-auto px-6 md:px-14 py-16" data-purpose="featured-projects" id="projects">
+<!-- Header with Action Button -->
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-neutral-900">
+        FEATURED PROJECT
+      </h2>
+<a class="circle-btn w-12 h-12 md:w-14 md:h-14 border-neutral-300" href="#services">
+<svg class="w-5 h-5 text-neutral-800 transform -rotate-45" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</div>
+<!-- Filter Pills -->
+<div class="flex items-center gap-3 mb-12">
+<button class="px-6 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase shadow-sm">
+        MOBILE APP
+      </button>
+<button class="px-6 py-2.5 rounded-full bg-white border border-neutral-300 text-neutral-700 hover:border-black text-xs font-semibold tracking-wider uppercase transition">
+        WEB DESIGN
+      </button>
+</div>
+<!-- Project Showcase Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+<!-- Showcase 1: Solar Panel / Power App -->
+<article class="flex flex-col group cursor-pointer" data-purpose="project-card">
+<div class="w-full bg-[#EDEDED] rounded-2xl p-6 md:p-10 flex items-center justify-center relative overflow-hidden h-[420px] md:h-[480px]">
+<!-- Mobile Screen Mockup 1 -->
+<div class="w-52 h-[340px] bg-white rounded-3xl p-4 shadow-xl border border-neutral-200 transform -rotate-3 transition duration-300 group-hover:rotate-0 flex flex-col justify-between">
+<div>
+<div class="w-full h-32 rounded-xl bg-neutral-200 overflow-hidden relative mb-3">
+<div class="absolute inset-0 bg-cover bg-center grayscale" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAkR2x3fDRsXJmOlJhO_B9hsgAn-AypOzVt1wO5qR-gbikp8IvCUp0SlaXgqJ-exNQEfs295Af7_GghxkRngikRiRp9KpaDsUCeCColuusjV2JR0tDGq8olissmf9fMAF_CpLIQDZDct7y4bXJ1FIld9oLONBhoPXn1H8ce7GABqzWUvezl93yut5wYCVM5qESygNnY9vrQnLUT-W-wEN5WkqbNhhRI4u54DRvz-hxfF0SrUVuPPwbAyx6dChbzExaMZg&quot;);"></div>
+<div class="absolute bottom-2 left-2 bg-black/60 text-white text-[9px] px-2 py-0.5 rounded">ECO POWER</div>
+</div>
+<p class="text-xs font-bold leading-snug">THE POWER OF LIFE</p>
+<p class="text-[10px] text-neutral-500 mt-1">Smart Solar System Tracking</p>
+</div>
+<div class="h-8 rounded-lg bg-neutral-900 text-white text-[10px] font-semibold flex items-center justify-center">
+              GET STARTED
+            </div>
+</div>
+<!-- Mobile Screen Mockup 2 (Overlapping) -->
+<div class="w-52 h-[340px] bg-[#1A1A1A] text-white rounded-3xl p-4 shadow-2xl border border-neutral-800 transform translate-x-12 translate-y-6 rotate-6 transition duration-300 group-hover:translate-x-6">
+<div class="text-[10px] text-neutral-400 uppercase tracking-widest mb-1">DASHBOARD</div>
+<div class="text-xs font-bold mb-4">HANDLE YOUR ELECTRICITY</div>
+<div class="bg-neutral-800 rounded-xl p-3 mb-3 border border-neutral-700">
+<div class="text-[10px] text-neutral-400">Total Generated</div>
+<div class="text-lg font-bold">428.4 kWh</div>
+</div>
+<div class="h-24 bg-neutral-800/60 rounded-xl flex items-center justify-center border border-neutral-700/50">
+<span class="text-[11px] text-neutral-400">Live Grid Meter</span>
+</div>
+</div>
+</div>
+<div class="mt-5 flex justify-between items-start">
+<div>
+<h3 class="text-xs font-bold uppercase tracking-wider text-black">APP DESIGN</h3>
+<p class="text-xs text-neutral-500 uppercase tracking-widest mt-0.5">SOLAR PANEL MOBILE APP</p>
+</div>
+</div>
+</article>
+<!-- Showcase 2: Furniture E-Commerce App -->
+<article class="flex flex-col group cursor-pointer" data-purpose="project-card">
+<div class="w-full bg-[#EAEAEA] rounded-2xl p-6 md:p-10 flex items-center justify-center relative overflow-hidden h-[420px] md:h-[480px]">
+<!-- Mobile Screen Mockup -->
+<div class="w-56 h-[360px] bg-white rounded-3xl p-5 shadow-2xl border border-neutral-200 flex flex-col justify-between transform transition duration-300 group-hover:scale-105">
+<div>
+<div class="flex justify-between items-center text-[11px] font-semibold mb-3">
+<span class="">PRODUCT DETAILS</span>
+<span class="">♡</span>
+</div>
+<!-- Chair Mockup Box -->
+<div class="w-full h-36 bg-[#F4F4F4] rounded-2xl flex items-center justify-center p-2 mb-3">
+<svg class="w-20 h-20 text-neutral-700" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+<path d="M7 13h10M6 13v7m12-7v7m-2-7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v8" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="text-xs font-bold text-black">WOOD CHAIR</div>
+<div class="text-sm font-extrabold text-neutral-900 mt-1">$140.00</div>
+</div>
+<div class="w-full py-2 bg-neutral-900 text-white text-[11px] font-semibold rounded-xl text-center">
+              ADD TO CART
+            </div>
+</div>
+</div>
+<div class="mt-5 flex justify-between items-start">
+<div>
+<h3 class="text-xs font-bold uppercase tracking-wider text-black">FURNITURE APP</h3>
+<p class="text-xs text-neutral-500 uppercase tracking-widest mt-0.5">OUR GROUNDBREAKING FURNITURE</p>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- END: Featured Project Section -->
+<!-- BEGIN: Services Section -->
+<section class="max-w-[1400px] mx-auto px-6 md:px-14 py-20" data-purpose="services-section" id="services">
+<!-- Centered Header -->
+<div class="text-center max-w-2xl mx-auto mb-14">
+<h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-neutral-900 mb-4">
+        THE SERVICES WE PROVIDE
+      </h2>
+<p class="text-xs md:text-xs uppercase font-medium leading-relaxed tracking-wider text-neutral-500">
+        CREATING VISUALLY APPEALING AND FUNCTIONAL WEBSITES TAILORED TO THE CLIENT'S NEEDS AND GOALS. PROVIDING A CONSISTENT USER EXPERIENCE ACROSS PLATFORMS.
+      </p>
+</div>
+<!-- Service Pill Rows -->
+<div class="max-w-4xl mx-auto flex flex-col space-y-3.5">
+<!-- Item 1 -->
+<div class="w-full flex items-center justify-between px-6 py-4 rounded-full border border-neutral-300 bg-white hover:border-black transition cursor-pointer">
+<span class="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-xs font-medium text-neutral-700">1</span>
+<span class="text-xs md:text-sm font-bold tracking-widest uppercase text-neutral-800">UI/UX</span>
+<div class="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center">
+<svg class="w-3.5 h-3.5 text-neutral-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="w-full flex items-center justify-between px-6 py-4 rounded-full border border-neutral-300 bg-white hover:border-black transition cursor-pointer">
+<span class="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-xs font-medium text-neutral-700">2</span>
+<span class="text-xs md:text-sm font-bold tracking-widest uppercase text-neutral-800">WEB DESIGN</span>
+<div class="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center">
+<svg class="w-3.5 h-3.5 text-neutral-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+</div>
+<!-- Item 3: Active Black Inverted Pill -->
+<div class="w-full flex items-center justify-between px-6 py-4 rounded-full bg-black text-white shadow-lg cursor-pointer transform scale-[1.01]">
+<span class="w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center text-xs font-medium text-neutral-300">3</span>
+<span class="text-xs md:text-sm font-bold tracking-widest uppercase text-white">LANDING PAGE DESIGN</span>
+<div class="w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center">
+<svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="w-full flex items-center justify-between px-6 py-4 rounded-full border border-neutral-300 bg-white hover:border-black transition cursor-pointer">
+<span class="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-xs font-medium text-neutral-700">4</span>
+<span class="text-xs md:text-sm font-bold tracking-widest uppercase text-neutral-800">UI DESIGN FIGMA</span>
+<div class="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center">
+<svg class="w-3.5 h-3.5 text-neutral-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="w-full flex items-center justify-between px-6 py-4 rounded-full border border-neutral-300 bg-white hover:border-black transition cursor-pointer">
+<span class="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-xs font-medium text-neutral-700">5</span>
+<span class="text-xs md:text-sm font-bold tracking-widest uppercase text-neutral-800">MOBILE APP DESIGN</span>
+<div class="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center">
+<svg class="w-3.5 h-3.5 text-neutral-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Services Section -->
+<!-- BEGIN: Contact / Let's Talk Footer -->
+<footer class="w-full bg-[#0D0D0D] text-white pt-20 pb-12 mt-12" data-purpose="footer-section">
+<div class="max-w-[1400px] mx-auto px-6 md:px-14 flex flex-col items-center">
+<!-- Top Text Links -->
+<div class="flex flex-wrap items-center justify-center gap-6 md:gap-12 text-[10px] md:text-xs font-semibold tracking-widest uppercase text-neutral-400 mb-12">
+<a class="hover:text-white transition" href="#">DRIBBBLE</a>
+<a class="hover:text-white transition" href="#">LINKEDIN</a>
+<a class="hover:text-white transition" href="#">BEHANCE</a>
+<a class="hover:text-white transition" href="#">INSTAGRAM</a>
+<a class="hover:text-white transition" href="#">FIGMA</a>
+<a class="hover:text-white transition" href="#">COMMUNITY</a>
+</div>
+<!-- Metallic Callout Headline -->
+<div class="w-full text-center py-6 md:py-10">
+<h2 class="text-[12vw] md:text-[8rem] lg:text-[10rem] font-black uppercase leading-none tracking-tight footer-metallic-title select-none">
+          LET'S TALK
+        </h2>
+</div>
+<!-- Action Button Pills -->
+<div class="flex flex-wrap items-center justify-center gap-3.5 mt-8 mb-20">
+<a class="px-6 py-2.5 rounded-full border border-neutral-700 hover:border-neutral-400 text-xs font-medium tracking-wider uppercase transition" href="#">
+          INSTAGRAM
+        </a>
+<a class="px-6 py-2.5 rounded-full border border-neutral-700 hover:border-neutral-400 text-xs font-medium tracking-wider uppercase transition" href="#">
+          DRIBBBLE
+        </a>
+<a class="px-6 py-2.5 rounded-full border border-neutral-700 hover:border-neutral-400 text-xs font-medium tracking-wider uppercase transition" href="#">
+          LINKEDIN
+        </a>
+<a class="px-7 py-2.5 rounded-full bg-white text-black hover:bg-neutral-200 text-xs font-bold tracking-wider uppercase transition" href="mailto:hello@example.com">
+          CONTACT ME
+        </a>
+</div>
+<!-- Bottom Credits Bar -->
+<div class="w-full pt-8 border-t border-neutral-900 flex flex-col md:flex-row items-center justify-between text-[10px] tracking-widest uppercase text-neutral-600 font-semibold gap-4">
+<div class="">PORTFOLIO. ALL RIGHTS RESERVED</div>
+<div class="">DESIGN BY SAHIL DOBARIYA</div>
+</div>
+</div>
+</footer>
+<!-- END: Contact / Let's Talk Footer -->
+
+
+
+
+
+
+</body></html>

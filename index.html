@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Jishnu Mondal — Monochrome Editorial Developer & Designer Portfolio</title>
+  <meta name="description" content="Portfolio of Jishnu Mondal, a talented freelance designer & developer specializing in UI/UX, Web Design, Landing Pages, Figma, and Webflow.">
+  
+  <!-- Tailwind CSS v3 with Plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              black: '#0D0D0D',
+              dark: '#141414',
+              gray: '#7A7A7A',
+              light: '#F8F9FA',
+              border: '#E5E5E5'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Typography & Gradients Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="FlexCarousel.css">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #FAFAFA;
+      color: #121212;
+      overflow-x: clip;
+      selection-background-color: #000;
+      selection-color: #fff;
+    }
+
+    ::selection {
+      background: #000;
+      color: #fff;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* ============================================================
+       EXPERIENCE HORIZONTAL SPATIAL CANVAS
+       ============================================================ */
+    #exp-horizontal-stage {
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+    }
+    .exp-panel {
+      will-change: transform, opacity;
+    }
+    .exp-date-bg {
+      will-change: transform;
+    }
+    @keyframes expLivingFlow {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    .exp-living-flow {
+      animation: expLivingFlow 4.5s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #experience {
+        height: auto !important;
+      }
+      #exp-sticky-viewport {
+        position: relative !important;
+        height: auto !important;
+        overflow: visible !important;
+      }
+      #exp-horizontal-stage {
+        flex-direction: column !important;
+        width: 100% !important;
+        transform: none !important;
+      }
+      .exp-panel {
+        width: 100% !important;
+        padding-top: 5rem !important;
+        padding-bottom: 5rem !important;
+      }
+      .exp-living-flow {
+        animation: none !important;
+      }
+    }
+
+    #project-modal {
+      transition: opacity 380ms cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 380ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #project-modal-card {
+      transition: transform 440ms cubic-bezier(0.16, 1, 0.3, 1), opacity 360ms cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+      transform: translate3d(0, 0, 0);
+    }
+
+    /* ============================================================
+       EDITORIAL HERO TITLE
+       ============================================================ */
+    /* Metallic gradient for lower text ("PORTFOLIO") only */
+    .metallic-title {
+      display: inline-block;
+      background: linear-gradient(180deg, #1A1A1A 0%, #4A4A4A 35%, #8E8E8E 60%, #BDBDBD 85%, #E5E5E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Portrait gradient mask so bottom of person fades cleanly into background */
+    .hero-portrait-mask {
+      mask-image: linear-gradient(black 65%, transparent 100%);
+      -webkit-mask-image: linear-gradient(black 65%, transparent 100%);
+    }
+
+    .footer-metallic-title {
+      background: linear-gradient(180deg, #FFFFFF 0%, #a8a8a8 50%, #444444 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: filter 0.3s ease;
+    }
+    .footer-metallic-title:hover {
+      filter: brightness(1.2);
+    }
+
+    .letter-spacing-widest {
+      letter-spacing: 0.18em;
+    }
+
+    .pill-btn {
+      border: 1px solid #D6D6D6;
+      border-radius: 9999px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pill-btn:hover {
+      border-color: #000000;
+      transform: translateY(-1px);
+    }
+
+    .circle-btn {
+      border: 1px solid #D1D1D1;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background-color 0.25s ease;
+    }
+    .circle-btn:hover {
+      border-color: #000;
+      transform: scale(1.08);
+      background-color: #f0f0f0;
+    }
+
+    /* Hero portrait mask */
+    .hero-portrait-mask {
+      mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+    }
+
+    /* Accordion transition styles */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, margin 0.3s ease;
+      opacity: 0;
+    }
+    .accordion-item.active .accordion-content {
+      max-height: 250px;
+      opacity: 1;
+      margin-top: 1rem;
+    }
+
+    /* Toast animation */
+    .toast-enter {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    .toast-active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="antialiased text-[#111] bg-[#FAFAFA]">
+
+  <!-- Notification Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- BEGIN: Navigation Header -->
+  <header class="relative z-40 bg-[#FAFAFA] transition-all duration-300 w-full pt-6 pb-4 px-6 md:px-14 max-w-[1400px] mx-auto flex items-center justify-between" data-purpose="site-navigation">
+    <!-- Brand Wordmark -->
+    <a class="group font-extrabold text-xl tracking-tight text-black flex items-center" href="#home">
+      <span>ECHO</span>
+      <span class="inline-block w-2 h-2 bg-black rounded-full ml-1 transition-transform group-hover:scale-150 duration-200"></span>
+    </a>
+
+    <!-- Center Navigation Links (Pill with no unwanted wrapping) -->
+    <nav class="hidden md:flex items-center gap-1 p-1 bg-white/95 border border-[#E2E2E2] rounded-full shadow-sm text-xs font-semibold tracking-wider text-neutral-600">
+      <a id="nav-home" class="nav-link px-4 py-2 rounded-full border border-neutral-300 text-black hover:border-black transition whitespace-nowrap" href="#home">HOME</a>
+      <a id="nav-about" class="nav-link px-4 py-2 rounded-full border border-transparent hover:border-neutral-200 hover:text-black transition whitespace-nowrap" href="#about">ABOUT ME</a>
+      <a id="nav-experience" class="nav-link px-4 py-2 rounded-full border border-transparent hover:border-neutral-200 hover:text-black transition whitespace-nowrap" href="#experience">EXPERIENCE</a>
+      <a id="nav-projects" class="nav-link px-4 py-2 rounded-full border border-transparent hover:border-neutral-200 hover:text-black transition whitespace-nowrap" href="#projects">PROJECTS</a>
+      <a id="nav-landing-pages" class="nav-link px-4 py-2 rounded-full border border-transparent hover:border-neutral-200 hover:text-black transition whitespace-nowrap" href="#landing-pages">LANDING PAGES</a>
+      <a id="nav-services" class="nav-link px-4 py-2 rounded-full border border-transparent hover:border-neutral-200 hover:text-black transition whitespace-nowrap" href="#services">SERVICES</a>
+    </nav>
+
+    <!-- Right Social & Menu Links -->
+    <div class="flex items-center gap-1.5 md:gap-2 p-1.5 bg-white/95 border border-[#E2E2E2] rounded-full shadow-sm">
+      <!-- Instagram -->
+      <a class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 hover:text-black" href="https://www.instagram.com/echo__builds/" target="_blank" rel="noopener" title="Instagram">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect height="18" rx="5" ry="5" width="18" x="3" y="3"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+      </a>
+
+      <!-- Twitter / X -->
+      <a class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 hover:text-black" href="https://x.com/Jishn8m" target="_blank" rel="noopener" title="Twitter">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+
+      <!-- LinkedIn -->
+      <a class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 hover:text-black" href="https://www.linkedin.com/in/jishnu-mondal/" target="_blank" rel="noopener" title="LinkedIn">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+      </a>
+
+      <!-- GitHub -->
+      <a class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 hover:text-black" href="https://github.com/Jishnu09-siuu" target="_blank" rel="noopener" title="GitHub">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open Menu" class="md:hidden w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 ml-1">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="4" x2="20" y1="7" y2="7"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="17" y2="17"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex justify-end">
+    <div id="mobile-drawer-content" class="w-4/5 max-w-sm bg-white h-full p-8 flex flex-col justify-between transform translate-x-full transition-transform duration-300 shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-neutral-200">
+          <span class="font-extrabold text-lg tracking-tight">ECHO•</span>
+          <button onclick="toggleMobileMenu()" class="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-neutral-700 hover:border-black">
+            ✕
+          </button>
+        </div>
+        <nav class="flex flex-col gap-4 mt-8 text-base font-bold tracking-wider">
+          <a onclick="toggleMobileMenu()" href="#home" class="py-2 border-b border-neutral-100 hover:text-neutral-500">HOME</a>
+          <a onclick="toggleMobileMenu()" href="#about" class="py-2 border-b border-neutral-100 hover:text-neutral-500">ABOUT ME</a>
+          <a onclick="toggleMobileMenu()" href="#experience" class="py-2 border-b border-neutral-100 hover:text-neutral-500">EXPERIENCE</a>
+          <a onclick="toggleMobileMenu()" href="#projects" class="py-2 border-b border-neutral-100 hover:text-neutral-500">PROJECTS</a>
+          <a onclick="toggleMobileMenu()" href="#landing-pages" class="py-2 border-b border-neutral-100 hover:text-neutral-500">LANDING PAGES</a>
+          <a onclick="toggleMobileMenu()" href="#services" class="py-2 border-b border-neutral-100 hover:text-neutral-500">SERVICES</a>
+          <a onclick="toggleMobileMenu(); openContactModal();" href="javascript:void(0)" class="py-2 text-black hover:underline">CONTACT</a>
+        </nav>
+      </div>
+      <div class="pt-6 border-t border-neutral-200">
+        <p class="text-xs uppercase tracking-widest text-neutral-400 mb-3">JISHNU MONDAL</p>
+        <p class="text-xs text-neutral-600">Freelance Designer & Developer</p>
+      </div>
+    </div>
+  </div>
+  <!-- END: Navigation -->
+
+  <!-- BEGIN: Hero Section -->
+  <main class="relative max-w-[1400px] mx-auto px-6 md:px-14 pt-6 md:pt-12 pb-20 overflow-hidden" data-purpose="hero-section" id="home">
+    <!-- Big Title Header -->
+    <div class="text-center w-full mb-6 md:mb-10 relative z-0 select-none">
+      <h1 id="hero-title" class="text-[9.5vw] md:text-[8rem] lg:text-[9.5rem] font-extrabold uppercase leading-[0.85] tracking-tight">
+        <span class="block">
+          <span class="text-[#121212]">EXPLORE MY</span>
+        </span>
+        <span class="block">
+          <span class="metallic-title">PORTFOLIO</span>
+        </span>
+      </h1>
+    </div>
+
+    <!-- Center Headshot & Symmetrical Content Grid -->
+    <div class="relative grid grid-cols-1 md:grid-cols-12 items-center mt-2 md:-mt-6">
+      
+      <!-- Left Column: Designer info & Arrow -->
+      <div class="md:col-span-3 flex flex-col items-start md:items-start pl-2 md:pl-6 order-2 md:order-1 pt-6 md:pt-0">
+        <span class="text-xs font-bold tracking-wider uppercase text-neutral-800 mb-6">DESIGNER EST.2000</span>
+        <a class="circle-btn w-14 h-14 md:w-16 md:h-16 border-neutral-300" href="#about" aria-label="Scroll to About Section">
+          <svg class="w-5 h-5 text-neutral-800 transform rotate-45" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Center Column: Stylized Black and White Headshot (in front of text) -->
+      <div class="md:col-span-6 flex justify-center order-1 md:order-2 relative z-10 -mt-16 md:-mt-36">
+        <div class="relative w-[320px] h-[400px] md:w-[480px] md:h-[580px] flex items-end justify-center hero-portrait-mask">
+          <img src="assets/hero_portrait.png" 
+               alt="Jishnu Mondal — Developer & Designer" 
+               class="w-full h-full object-contain object-bottom pointer-events-none select-none transition-transform duration-700 hover:scale-[1.02]"
+               onerror="this.src='https://lh3.googleusercontent.com/aida-public/AB6AXuCcazn9gQbymIOQnywium-Vsjyj8kV2UoFlH63M0RX3nV0Z_2LZD-rugA9K0ORrfrFxJEkOBrlAyB0HWB8cm7KhZp-5sNgQuhXyGzJ9WmwvjEDhYw_g3BAr4A9j5phGh8JE5Rka_2e_B_o51jY55CQt5wfTPsFDGRvU2gaHKRu4gOOZD_FnQOszLiRDTh3La-RZzzHeFwfFY3XPZ9ikMq55oZ_xP2A95rzfUQE8WkHuIogtKLU-9zuSV9QywgCsVw4Btw'">
+        </div>
+      </div>
+
+      <!-- Right Column: Pitch and Disciplines -->
+      <div class="md:col-span-3 flex flex-col items-start md:items-end text-left order-3 pt-6 md:pt-0 pr-2 md:pr-6 space-y-10">
+        <!-- Pitch Quote -->
+        <p class="text-[11px] md:text-xs uppercase font-medium leading-relaxed tracking-wider text-neutral-700 max-w-[220px] text-left">
+          I AM PASSIONATE ABOUT CREATING WEBSITES THAT STAND OUT FROM THE CROWD.
+        </p>
+
+        <!-- Service List with hover interaction -->
+        <div class="flex flex-col space-y-3 text-[11px] md:text-xs font-semibold tracking-widest text-neutral-600 uppercase">
+          <a href="#services" onclick="selectService(0)" class="hover:text-black hover:translate-x-1 md:hover:-translate-x-1 transition-all inline-flex items-center gap-1.5">
+            <span>UI/UX</span>
+          </a>
+          <a href="#services" onclick="selectService(1)" class="hover:text-black hover:translate-x-1 md:hover:-translate-x-1 transition-all inline-flex items-center gap-1.5">
+            <span>WEB DESIGN</span>
+          </a>
+          <a href="#services" onclick="selectService(2)" class="hover:text-black hover:translate-x-1 md:hover:-translate-x-1 transition-all inline-flex items-center gap-1.5 font-bold text-black">
+            <span>LANDING PAGE</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <!-- END: Hero Section -->
+
+  <!-- BEGIN: About Section (ScrollExpandMedia Component) -->
+  <section class="relative w-full bg-[#0D0D0D] text-white" id="about" style="min-height: 200vh;">
+    <div class="sticky top-0 w-full h-[100dvh] overflow-hidden flex flex-col items-center justify-start z-10">
+      <!-- Background Ambient with dynamic opacity: 1 - scrollProgress (Previous Starry Night Castle Background) -->
+      <div id="sem-bg-img" class="absolute inset-0 z-0 h-full w-full pointer-events-none transition-opacity duration-150 ease-out" style="will-change: opacity; transform: translateZ(0);">
+        <img
+          src="assets/about_starry_castle_hq.jpg?v=10"
+          alt="Monochrome Starry Night Castle Background"
+          class="w-full h-full object-cover object-center"
+        />
+        <div class="absolute inset-0 bg-black/25"></div>
+      </div>
+
+      <!-- Centered Interactive Stage Container (Exact from React Component) -->
+      <div class="container mx-auto flex flex-col items-center justify-start relative z-10 w-full h-full">
+        <div class="flex flex-col items-center justify-center w-full h-[100dvh] relative">
+          
+          <!-- Expanding Media Card (Closed state: 300px x 400px, expands on scroll) -->
+          <div
+            id="sem-media-container"
+            class="absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl overflow-hidden shadow-2xl transition-none bg-[#07090E]"
+            style="width: 300px; height: 400px; max-width: 95vw; max-height: 85vh; box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9); border: 1px solid rgba(255,255,255,0.35); will-change: width, height; backface-visibility: hidden;"
+          >
+            <!-- Media Image Container: fits 100% of the box without any letterboxing or cropping -->
+            <div class="relative w-full h-full overflow-hidden rounded-xl flex items-center justify-center bg-[#07090E]">
+              <!-- Crisp Base Image (GPU accelerated) -->
+              <img
+                id="sem-media-img"
+                src="assets/about_floating_light_hq.png?v=14"
+                alt="Jishnu Mondal - Ascendance &amp; Digital Craft"
+                class="w-full h-full object-cover rounded-xl transition-none"
+                style="transform: scale(1.02) translateZ(0); transform-origin: center; backface-visibility: hidden;"
+              />
+              <!-- Pre-blurred Layer for 120 FPS GPU-accelerated Unblur (fades out opacity smoothly on scroll) -->
+              <img
+                id="sem-media-blur"
+                src="assets/about_floating_light_hq.png?v=14"
+                alt=""
+                aria-hidden="true"
+                class="absolute inset-0 w-full h-full object-cover rounded-xl transition-none pointer-events-none"
+                style="filter: blur(18px); transform: scale(1.08) translateZ(0); transform-origin: center; opacity: 1; will-change: opacity; backface-visibility: hidden;"
+              />
+              <!-- Subtle Gradient Overlay: protects top/bottom legibility while keeping the center 100% transparent -->
+              <div id="sem-media-overlay" class="absolute inset-0 bg-gradient-to-b from-black/75 via-transparent to-black/85 rounded-xl transition-opacity duration-150 pointer-events-none"></div>
+
+              <!-- Minimal Aesthetic About Info - Perimeter Layout with Empty Center -->
+              <div
+                id="sem-media-content"
+                class="absolute inset-0 z-20 flex flex-col justify-between p-5 sm:p-7 md:p-9 pointer-events-none opacity-0 transition-all duration-300 select-none"
+              >
+                <!-- Top Perimeter: Refined Monochrome Headline -->
+                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-3">
+                  <h3 class="text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-tight text-white max-w-xl">
+                    TURNING VISIONARY IDEAS INTO FAST, DISTINCTIVE DIGITAL EXPERIENCES
+                  </h3>
+                  <span class="text-[10px] font-mono tracking-wider uppercase text-neutral-400 shrink-0">
+                    BASED IN INDIA &bull; WORLDWIDE
+                  </span>
+                </div>
+
+                <!-- Center Zone: COMPLETELY OPEN & EMPTY - 100% unobscured view of artwork -->
+                <div class="flex-1 pointer-events-none min-h-[140px] md:min-h-[200px]"></div>
+
+                <!-- Bottom Perimeter: Disciplines, About Summary & Monochrome CTAs -->
+                <div class="pt-3 border-t border-white/10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                  <!-- About Me Summary & Disciplines -->
+                  <div class="max-w-xl space-y-2">
+                    <div class="flex items-center gap-2.5">
+                      <span class="text-[10px] font-bold tracking-widest uppercase text-neutral-300">DISCIPLINE &amp; CRAFT</span>
+                      <div class="h-px bg-white/15 w-6"></div>
+                      <span class="text-[10px] font-mono tracking-widest uppercase text-neutral-400">UI/UX &bull; WEB DESIGN &bull; WEBFLOW &bull; FIGMA</span>
+                    </div>
+                    <p class="text-xs sm:text-[12px] font-medium leading-relaxed tracking-wider uppercase text-neutral-300">
+                      I SPECIALIZE IN BUILDING BESPOKE DIGITAL PRODUCTS WHERE PURPOSEFUL EDITORIAL DESIGN MEETS ROBUST ENGINEERING. CREATING EXPERIENCES WITH INTENTIONAL MOTION, SYSTEMATIC RIGOR, AND MEASURABLE IMPACT.
+                    </p>
+                  </div>
+
+                  <!-- Monochrome Action Buttons -->
+                  <div class="flex items-center gap-3 shrink-0 pt-1 md:pt-0">
+                    <a href="javascript:void(0)" onclick="openContactModal()" class="pointer-events-auto px-5 py-2.5 rounded-full bg-white text-black hover:bg-neutral-200 text-xs font-bold tracking-wider uppercase transition-all duration-200 inline-flex items-center gap-2">
+                      <span>GET IN TOUCH</span>
+                      <svg class="w-3.5 h-3.5 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                    <a href="#services" class="pointer-events-auto px-5 py-2.5 rounded-full border border-neutral-500 hover:border-white text-white text-xs font-bold tracking-wider uppercase transition-all duration-200">
+                      SERVICES
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Subtitles (Translate Outward) -->
+            <div class="flex flex-col items-center text-center relative z-10 mt-4 pointer-events-none">
+              <p id="sem-date" class="text-xl md:text-2xl text-neutral-300 font-semibold tracking-wider uppercase transition-none drop-shadow">
+                BACKGROUND &amp; VISION
+              </p>
+              <p id="sem-scroll-prompt" class="text-neutral-400 font-medium text-xs tracking-widest uppercase transition-none mt-1 drop-shadow">
+                SCROLL TO EXPAND
+              </p>
+            </div>
+          </div>
+
+          <!-- Splitting Title Header (ABOUT translates left, ME translates right) -->
+          <div class="flex items-center justify-center text-center gap-2 sm:gap-4 w-full relative z-10 pointer-events-none flex-col" style="will-change: transform; backface-visibility: hidden;">
+            <h2 id="sem-title-first" class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight transition-none drop-shadow-2xl" style="will-change: transform, opacity;">
+              ABOUT
+            </h2>
+            <h2 id="sem-title-rest" class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight transition-none drop-shadow-2xl" style="will-change: transform, opacity;">
+              ME
+            </h2>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END: About Section (ScrollExpandMedia Component) -->
+
+  <!-- BEGIN: Experience Section ("Where I've Been" — Horizontal Cinematic Installation) -->
+  <section
+    class="relative w-full bg-[#070709] text-white overflow-visible"
+    data-purpose="experience-section"
+    id="experience"
+    style="height: 280vh;"
+    string="progress"
+    string-id="experience-journey"
+  >
+    <!-- Sticky 100vh Theater / Viewport Window -->
+    <div
+      id="exp-sticky-viewport"
+      class="sticky top-0 w-full h-[100dvh] overflow-hidden bg-[#070709] flex flex-col justify-between select-none"
+    >
+      <!-- Layer 0: Background Cinematic Ambience & Atmospheric Grid -->
+      <div class="absolute inset-0 pointer-events-none opacity-20">
+        <div class="absolute inset-0" style="background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px); background-size: 40px 40px;"></div>
+      </div>
+
+      <!-- Layer 0B: Massive Ambient Horizontal Running Tickers (Layered Depth) -->
+      <div class="absolute inset-0 flex flex-col justify-around pointer-events-none overflow-hidden opacity-[0.035]">
+        <!-- Upper Ticker (Drifting Left) -->
+        <div id="exp-ticker-top" class="whitespace-nowrap font-black uppercase text-[14vw] tracking-tighter will-change-transform leading-none">
+          CREATIVE TECHNOLOGIST &nbsp;&nbsp; FULL STACK ARCHITECTURE &nbsp;&nbsp; CREATIVE TECHNOLOGIST &nbsp;&nbsp; FULL STACK ARCHITECTURE &nbsp;&nbsp;
+        </div>
+        <!-- Lower Ticker (Drifting Right) -->
+        <div id="exp-ticker-bottom" class="whitespace-nowrap font-black uppercase text-[14vw] tracking-tighter will-change-transform leading-none">
+          2023 &nbsp;&nbsp; SELF-DIRECTED LEARNING &nbsp;&nbsp; 2026 &nbsp;&nbsp; FREELANCE SYSTEMS &nbsp;&nbsp; 2023 &nbsp;&nbsp; SELF-DIRECTED LEARNING &nbsp;&nbsp;
+        </div>
+      </div>
+
+      <!-- Top Minimalist Editorial HUD Bar -->
+      <header class="relative z-30 w-full px-6 md:px-14 pt-6 pb-4 flex items-center justify-between border-b border-white/[0.08] backdrop-blur-md bg-[#070709]/80">
+        <div class="flex items-center gap-4">
+          <span id="exp-hud-phase" class="text-[11px] font-semibold tracking-widest uppercase text-neutral-400">
+            SELF-DIRECTED LEARNING
+          </span>
+        </div>
+
+        <!-- Progress Tracker Bar (Top Hairline) -->
+        <div class="flex items-center gap-3">
+          <div class="w-24 sm:w-36 h-[2px] bg-white/10 rounded-full overflow-hidden">
+            <div id="exp-hud-progress" class="h-full bg-white transition-all duration-75 w-0"></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Center: Massive Horizontal Spatial Canvas (Controlled by Vertical Scroll) -->
+      <div class="relative z-20 flex-1 w-full overflow-hidden flex items-center">
+        <div
+          id="exp-horizontal-stage"
+          class="flex items-center h-full will-change-transform transition-none"
+          style="width: 290vw;"
+        >
+          <!-- ================= INTRO ENVIRONMENT (0vw - 90vw) ================= -->
+          <div class="exp-panel flex-shrink-0 w-[95vw] md:w-[85vw] px-8 md:px-16 lg:px-24 flex flex-col justify-center">
+            <div class="max-w-3xl">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/15 bg-white/[0.04] text-[10px] font-semibold tracking-widest uppercase text-neutral-300 mb-6">
+                <span>FOUNDATION & JOURNEY</span>
+              </div>
+              <h2 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight text-white leading-[0.88] mb-8">
+                WHERE<br>I'VE BEEN
+              </h2>
+              <p class="text-base sm:text-lg md:text-xl text-neutral-300 leading-relaxed max-w-xl font-normal">
+                My professional journey through different roles and environments.
+              </p>
+            </div>
+          </div>
+
+          <!-- ================= CHAPTER 01: LEARNING (90vw - 190vw) ================= -->
+          <div class="exp-panel relative flex-shrink-0 w-[105vw] md:w-[100vw] px-8 md:px-16 lg:px-24 flex flex-col justify-center">
+            <!-- Background Parallax Date Typography -->
+            <div
+              class="exp-date-bg absolute -top-8 right-12 md:right-28 text-[12vw] md:text-[14vw] font-black uppercase text-white/[0.04] tracking-tighter select-none pointer-events-none will-change-transform"
+              data-parallax-factor="0.15"
+            >
+              2023 — 2025
+            </div>
+
+            <div class="relative z-10 max-w-4xl">
+              <!-- Eyebrow & Date -->
+              <div class="flex items-center gap-4 mb-4">
+                <span class="text-xs font-semibold tracking-widest uppercase text-neutral-400">
+                  2023 — 2025
+                </span>
+                <span class="h-[1px] w-12 bg-white/20"></span>
+                <span class="text-xs font-bold tracking-widest uppercase text-white">
+                  SELF-DIRECTED LEARNING
+                </span>
+              </div>
+
+              <!-- Oversized Typographic Role Title -->
+              <h3 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[0.92] mb-6">
+                CREATIVE<br>TECHNOLOGIST
+              </h3>
+
+              <!-- Narrative Summary -->
+              <p class="text-sm sm:text-base md:text-lg text-neutral-300 leading-relaxed max-w-2xl mb-8">
+                Intensive self-education period exploring web technologies, creative coding, and modern development practices.
+              </p>
+
+              <!-- Milestone Specifications (Hairline Grid) -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-white/10 max-w-3xl mb-8">
+                <div>
+                  <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5">MILESTONE 01</div>
+                  <div class="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">Completed 500+ hours of hands-on development</div>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5">MILESTONE 02</div>
+                  <div class="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">Mastered React, Node.js, and TypeScript ecosystem</div>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5">MILESTONE 03</div>
+                  <div class="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">Built portfolio of 15+ production-ready projects</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= CHAPTER 02: FREELANCE (190vw - 290vw) ================= -->
+          <div class="exp-panel relative flex-shrink-0 w-[105vw] md:w-[100vw] px-8 md:px-16 lg:px-24 flex flex-col justify-center">
+            <!-- Background Parallax Date Typography -->
+            <div
+              class="exp-date-bg absolute -top-8 right-12 md:right-28 text-[12vw] md:text-[14vw] font-black uppercase text-white/[0.04] tracking-tighter select-none pointer-events-none will-change-transform"
+              data-parallax-factor="0.15"
+            >
+              2026 — PRESENT
+            </div>
+
+            <div class="relative z-10 max-w-4xl">
+              <!-- Eyebrow & Date -->
+              <div class="flex items-center gap-4 mb-4">
+                <span class="text-xs font-semibold tracking-widest uppercase text-neutral-400">
+                  2026 — PRESENT
+                </span>
+                <span class="h-[1px] w-12 bg-white/20"></span>
+                <span class="text-xs font-bold tracking-widest uppercase text-white">
+                  FREELANCE / INDEPENDENT
+                </span>
+                <span class="hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-full border border-white/20 text-[10px] font-semibold uppercase text-neutral-300">
+                  COMMERCIAL
+                </span>
+              </div>
+
+              <!-- Oversized Typographic Role Title -->
+              <h3 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[0.92] mb-6">
+                FULL STACK<br>DEVELOPER
+              </h3>
+
+              <!-- Narrative Summary -->
+              <p class="text-sm sm:text-base md:text-lg text-neutral-300 leading-relaxed max-w-2xl mb-8">
+                Building premium web experiences for clients worldwide. Specializing in interactive frontends, scalable backends, and AI-powered applications.
+              </p>
+
+              <!-- Milestone Specifications (Hairline Grid) -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-white/10 max-w-3xl mb-8">
+                <div>
+                  <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5">DELIVERY</div>
+                  <div class="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">Delivered 20+ projects across diverse industries</div>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5">INFRASTRUCTURE</div>
+                  <div class="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">Implemented CI/CD pipelines and cloud architecture</div>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5">MOTION SYSTEM</div>
+                  <div class="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">Created custom animation systems with GSAP and Three.js</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom Minimalist Editorial Navigation & Spatial Status Bar -->
+      <footer class="relative z-30 w-full px-6 md:px-14 py-4 flex items-center justify-between border-t border-white/[0.08] backdrop-blur-md bg-[#070709]/80">
+        <!-- Interactive Navigation Markers -->
+        <div class="flex items-center gap-2 sm:gap-4">
+          <button
+            type="button"
+            class="exp-jump-btn text-[11px] font-bold tracking-widest uppercase px-3 py-1 rounded-md border border-white/20 text-white bg-white/10 transition-all hover:bg-white/20"
+            data-target-progress="0.30"
+          >
+            LEARNING
+          </button>
+          <button
+            type="button"
+            class="exp-jump-btn text-[11px] font-bold tracking-widest uppercase px-3 py-1 rounded-md border border-white/5 text-neutral-500 hover:text-white transition-all hover:border-white/20"
+            data-target-progress="0.75"
+          >
+            FREELANCE
+          </button>
+        </div>
+      </footer>
+    </div>
+  </section>
+  <!-- END: Experience Section -->
+
+  <!-- BEGIN: Featured Project Section -->
+  <section class="max-w-[1400px] mx-auto px-6 md:px-14 py-16" data-purpose="featured-projects" id="projects">
+    <!-- Header -->
+    <div class="mb-8">
+      <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-neutral-900">
+        FEATURED PROJECT
+      </h2>
+    </div>
+
+    <!-- Dynamic Projects Content Area with FlexCarousel -->
+    <div id="projects-content" class="w-full">
+      <div id="flex-carousel-container" class="rounded-3xl border border-neutral-200 bg-[#EFEFEF] overflow-hidden shadow-inner" style="width: 100%; height: 560px; position: relative;">
+        <!-- FlexCarousel mounts here -->
+      </div>
+    </div>
+  </section>
+  <!-- END: Featured Project Section -->
+
+  <!-- BEGIN: Landing Pages Featured Projects (WorksWheel) Section -->
+  <section class="max-w-[1400px] mx-auto px-6 md:px-14 py-16" data-purpose="landing-pages-featured-projects" id="landing-pages">
+    <!-- Header with Title -->
+    <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-neutral-900">
+          LANDING PAGES
+        </h2>
+      </div>
+    </div>
+
+    <!-- WorksWheel 3D Container -->
+    <div class="w-full relative overflow-hidden" style="height: 640px; min-height: 520px;">
+      <div id="works-wheel-container" class="w-full h-full relative">
+        <!-- WorksWheel mounts here -->
+      </div>
+    </div>
+  </section>
+  <!-- END: Landing Pages Featured Projects Section -->
+
+  <!-- BEGIN: Services Section -->
+  <section class="max-w-[1400px] mx-auto px-6 md:px-14 py-20" data-purpose="services-section" id="services">
+    <!-- Centered Header -->
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-neutral-900 mb-4">
+        THE SERVICES WE PROVIDE
+      </h2>
+      <p class="text-xs md:text-xs uppercase font-medium leading-relaxed tracking-wider text-neutral-500">
+        CREATING VISUALLY APPEALING AND FUNCTIONAL WEBSITES TAILORED TO THE CLIENT'S NEEDS AND GOALS. PROVIDING A CONSISTENT USER EXPERIENCE ACROSS PLATFORMS.
+      </p>
+    </div>
+
+    <!-- Service Pill Rows Accordion -->
+    <div class="max-w-4xl mx-auto flex flex-col space-y-3.5">
+      
+      <!-- Item 1: UI/UX -->
+      <div id="service-0" onclick="toggleService(0)" class="accordion-item w-full flex flex-col px-6 py-4 rounded-3xl border border-neutral-300 bg-white hover:border-black transition-all cursor-pointer">
+        <div class="flex items-center justify-between">
+          <span class="item-badge w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-xs font-medium text-neutral-700">1</span>
+          <span class="item-title text-xs md:text-sm font-bold tracking-widest uppercase text-neutral-800">UI/UX</span>
+          <div class="item-icon w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center transition-transform">
+            <svg class="w-3.5 h-3.5 text-neutral-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <p class="text-xs text-neutral-500 leading-relaxed max-w-2xl mb-4">
+            User research, wireframing, interactive prototyping, and usability validation. Transforming complex workflows into effortless, delightful digital experiences.
+          </p>
+          <div class="flex items-center justify-between border-t border-neutral-200 pt-3">
+            <span class="text-[11px] font-mono text-neutral-400">DELIVERABLES: USER FLOWS, WIREFRAMES, DESIGN TOKENS</span>
+            <button onclick="event.stopPropagation(); bookSpecificService('UI/UX Design');" class="text-xs font-bold underline hover:text-neutral-600">INQUIRE ↗</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2: WEB DESIGN -->
+      <div id="service-1" onclick="toggleService(1)" class="accordion-item w-full flex flex-col px-6 py-4 rounded-3xl border border-neutral-300 bg-white hover:border-black transition-all cursor-pointer">
+        <div class="flex items-center justify-between">
+          <span class="item-badge w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-xs font-medium text-neutral-700">2</span>
+          <span class="item-title text-xs md:text-sm font-bold tracking-widest uppercase text-neutral-800">WEB DESIGN</span>
+          <div class="item-icon w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center transition-transform">
+            <svg class="w-3.5 h-3.5 text-neutral-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <p class="text-xs text-neutral-500 leading-relaxed max-w-2xl mb-4">
+            Bespoke web aesthetics with flawless responsive layouts, typography hierarchy, high-contrast dark modes, and crisp interactive animations.
+          </p>
+          <div class="flex items-center justify-between border-t border-neutral-200 pt-3">
+            <span class="text-[11px] font-mono text-neutral-400">DELIVERABLES: FULL RESPONSIVE WEB DESIGNS, FIGMA SYSTEM</span>
+            <button onclick="event.stopPropagation(); bookSpecificService('Web Design');" class="text-xs font-bold underline hover:text-neutral-600">INQUIRE ↗</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: LANDING PAGE DESIGN (Active by default) -->
+      <div id="service-2" onclick="toggleService(2)" class="accordion-item active w-full flex flex-col px-6 py-4 rounded-3xl bg-black text-white shadow-xl cursor-pointer transition-all transform scale-[1.01]">
+        <div class="flex items-center justify-between">
+          <span class="item-badge w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center text-xs font-medium text-neutral-300">3</span>
+          <span class="item-title text-xs md:text-sm font-bold tracking-widest uppercase text-white">LANDING PAGE DESIGN</span>
+          <div class="item-icon w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center transition-transform rotate-90">
+            <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <p class="text-xs text-neutral-300 leading-relaxed max-w-2xl mb-4">
+            High-converting editorial landing pages tailored for startups, product launches, and personal brands. Engineered to capture attention and boost conversions.
+          </p>
+          <div class="flex items-center justify-between border-t border-neutral-800 pt-3">
+            <span class="text-[11px] font-mono text-neutral-400">DELIVERABLES: COPYWRITING STRUCTURE, CUSTOM 3D/GRAPHICS, WEBFLOW CODE</span>
+            <button onclick="event.stopPropagation(); bookSpecificService('Landing Page Design');" class="text-xs font-bold underline text-white hover:text-neutral-300">INQUIRE ↗</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Services Section -->
+
+  <!-- BEGIN: Contact / Let's Talk Footer -->
+  <footer class="w-full bg-[#0D0D0D] text-white pt-20 pb-12 mt-12" data-purpose="footer-section" id="contact">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-14 flex flex-col items-center">
+      
+      <!-- Metallic Callout Headline -->
+      <div class="w-full text-center py-6 md:py-10">
+        <h2 class="text-[12vw] md:text-[8rem] lg:text-[10rem] font-black uppercase leading-none tracking-tight footer-metallic-title select-none cursor-pointer" onclick="openContactModal()">
+          LET'S TALK
+        </h2>
+      </div>
+
+      <!-- Action Button Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-3.5 mt-8 mb-20">
+        <a class="px-6 py-2.5 rounded-full border border-neutral-700 hover:border-neutral-400 text-xs font-medium tracking-wider uppercase transition text-neutral-300 hover:text-white" href="https://www.instagram.com/echo__builds/" target="_blank" rel="noopener">
+          INSTAGRAM
+        </a>
+        <a class="px-6 py-2.5 rounded-full border border-neutral-700 hover:border-neutral-400 text-xs font-medium tracking-wider uppercase transition text-neutral-300 hover:text-white" href="https://x.com/Jishn8m" target="_blank" rel="noopener">
+          TWITTER
+        </a>
+        <a class="px-6 py-2.5 rounded-full border border-neutral-700 hover:border-neutral-400 text-xs font-medium tracking-wider uppercase transition text-neutral-300 hover:text-white" href="https://www.linkedin.com/in/jishnu-mondal/" target="_blank" rel="noopener">
+          LINKEDIN
+        </a>
+        <a class="px-6 py-2.5 rounded-full border border-neutral-700 hover:border-neutral-400 text-xs font-medium tracking-wider uppercase transition text-neutral-300 hover:text-white" href="https://github.com/Jishnu09-siuu" target="_blank" rel="noopener">
+          GITHUB
+        </a>
+        <button onclick="openContactModal()" class="px-7 py-2.5 rounded-full bg-white text-black hover:bg-neutral-200 text-xs font-bold tracking-wider uppercase transition transform hover:scale-105">
+          CONTACT ME
+        </button>
+      </div>
+
+      <!-- Bottom Credits Bar -->
+      <div class="w-full pt-8 border-t border-neutral-900 flex flex-col md:flex-row items-center justify-between text-[10px] tracking-widest uppercase text-neutral-600 font-semibold gap-4">
+        <div>PORTFOLIO. ALL RIGHTS RESERVED</div>
+        <div>DESIGN BY JISHNU MONDAL</div>
+      </div>
+
+    </div>
+  </footer>
+  <!-- END: Contact / Let's Talk Footer -->
+
+  <!-- MODAL: Project Detail Modal -->
+  <div id="project-modal" onclick="if(event.target === this) closeProjectModal()" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md opacity-0 pointer-events-none flex items-center justify-center p-4">
+    <div id="project-modal-card" class="bg-white rounded-[32px] max-w-2xl w-full max-h-[90vh] overflow-y-auto no-scrollbar p-6 sm:p-8 md:p-9 shadow-2xl border border-neutral-100 opacity-0 scale-[0.94] translate-y-4 relative">
+      <div class="relative text-center pb-4 mb-5 border-b border-neutral-100">
+        <span id="modal-project-category" class="block text-[11px] font-bold tracking-widest uppercase text-neutral-400 mb-1">CATEGORY</span>
+        <h3 id="modal-project-title" class="text-2xl sm:text-3xl font-black uppercase text-neutral-900 tracking-tight">PROJECT TITLE</h3>
+        <button onclick="closeProjectModal()" class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-500 hover:border-black hover:text-black hover:bg-neutral-50 transition-colors" aria-label="Close modal">✕</button>
+      </div>
+      <div id="modal-project-body" class="space-y-5 text-sm text-neutral-700">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Contact Form Modal -->
+  <div id="contact-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+    <div id="contact-modal-card" class="bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl transform scale-95 transition-transform duration-300">
+      <div class="flex justify-between items-center border-b border-neutral-200 pb-4 mb-6">
+        <div>
+          <span class="text-[10px] font-bold tracking-widest uppercase text-neutral-400">START A CONVERSATION</span>
+          <h3 class="text-xl font-black uppercase text-neutral-900">LET'S BUILD SOMETHING</h3>
+        </div>
+        <button onclick="closeContactModal()" class="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-neutral-600 hover:border-black hover:text-black">✕</button>
+      </div>
+      
+      <form id="contact-form" onsubmit="submitContactForm(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1">Your Name</label>
+          <input type="text" id="contact-name" required placeholder="John Doe" class="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:border-black text-sm">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1">Email Address</label>
+          <input type="email" id="contact-email" required placeholder="john@company.com" class="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:border-black text-sm">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1">Service Required</label>
+          <select id="contact-service" class="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:border-black text-sm bg-white">
+            <option value="Landing Page Design">Landing Page Design</option>
+            <option value="UI/UX Design">UI/UX Design</option>
+            <option value="Web Design">Web Design</option>
+            <option value="Mobile App Design">Mobile App Design</option>
+            <option value="UI Design Figma">UI Design Figma</option>
+            <option value="Other">Other / Full Project</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1">Message</label>
+          <textarea id="contact-message" rows="3" required placeholder="Tell me about your project, goals, and timeline..." class="w-full px-4 py-2 rounded-xl border border-neutral-300 focus:outline-none focus:border-black text-sm"></textarea>
+        </div>
+        <button type="submit" class="w-full py-3 bg-black text-white rounded-xl text-xs font-bold tracking-widest uppercase hover:bg-neutral-800 transition">
+          SEND MESSAGE
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Cart Drawer / Modal -->
+  <div id="cart-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+    <div id="cart-modal-card" class="bg-white rounded-3xl max-w-md w-full p-6 md:p-8 shadow-2xl transform scale-95 transition-transform duration-300">
+      <div class="flex justify-between items-center border-b border-neutral-200 pb-4 mb-4">
+        <h3 class="text-lg font-black uppercase text-neutral-900">SHOPPING BAG</h3>
+        <button onclick="closeCartModal()" class="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-neutral-600 hover:border-black hover:text-black">✕</button>
+      </div>
+      <div id="cart-items" class="py-4 space-y-3 min-h-[120px] max-h-[300px] overflow-y-auto">
+        <p class="text-xs text-neutral-400 text-center py-8">Your bag is empty.</p>
+      </div>
+      <div class="border-t border-neutral-200 pt-4 mt-2">
+        <div class="flex justify-between items-center font-bold text-sm mb-4">
+          <span>SUBTOTAL</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+        <button onclick="checkoutCart()" class="w-full py-3 bg-black text-white rounded-xl text-xs font-bold tracking-widest uppercase hover:bg-neutral-800 transition">
+          PROCEED TO CHECKOUT
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT: Comprehensive Interactivity -->
+  <script>
+    // Cart state
+    let cart = [];
+
+    // Project data details
+    const projectsData = {
+      solar: {
+        category: 'APP DESIGN',
+        title: 'SOLAR PANEL MOBILE APP',
+        description: 'An intelligent energy management application that allows users to monitor real-time photovoltaic output, battery reserve statuses, and grid export rates.',
+        deliverables: ['Real-time IoT Telemetry Interface', 'Dark Mode High-Contrast UI', 'Custom Interactive Solar Graphs', 'Battery Degradation Predictor'],
+        tools: ['Figma', 'React Native', 'Tailwind', 'SwiftUI'],
+        stats: '428.4 kWh daily monitoring capacity with 99.8% precision telemetry.'
+      },
+      furniture: {
+        category: 'FURNITURE APP',
+        title: 'OUR GROUNDBREAKING FURNITURE',
+        description: 'A minimalist architectural furniture e-commerce experience designed for curated designer objects, featuring augmented reality preview and fluid one-tap checkout.',
+        deliverables: ['Editorial Product Showcase', 'Minimal Cart Flow', 'Haptic Interactions', 'AR Object Viewer'],
+        tools: ['Figma', 'Three.js', 'Next.js', 'Stripe'],
+        stats: 'Featured piece: Hand-carved Wood Chair ($140.00).'
+      },
+      atelier: {
+        category: 'WEB DESIGN',
+        title: 'ATELIER MONOCHROME STUDIO',
+        description: 'A bespoke editorial web portfolio for an international Scandinavian architecture practice. Built with subtle typography gradients, fluid scroll interactions, and monolithic layout grids.',
+        deliverables: ['Editorial Layout System', 'Custom Typography Styling', 'Full Responsive CMS', 'Scroll-linked Animations'],
+        tools: ['Figma', 'Webflow', 'GSAP', 'Barba.js'],
+        stats: 'Awarded Site of the Day for Editorial Excellence.'
+      },
+      nexus: {
+        category: 'WEB APPLICATION',
+        title: 'NEXUS AI ANALYTICS PLATFORM',
+        description: 'A mission-critical observability and analytics console for distributed systems. Real-time telemetry, cluster health maps, and predictive query cost forecasting.',
+        deliverables: ['Real-time Stream Canvas', 'Data Visualization System', 'Keyboard-Driven Command Palette', 'Micro-interactions'],
+        tools: ['React', 'TypeScript', 'Tailwind', 'D3.js'],
+        stats: 'Processes over 1.2M queries per second at 12ms average latency.'
+      }
+    };
+
+    // Filter projects
+    function filterProjects(filter) {
+      const tabs = {
+        all: document.getElementById('filter-all'),
+        web: document.getElementById('filter-web'),
+        landing: document.getElementById('filter-landing')
+      };
+
+      Object.keys(tabs).forEach(k => {
+        if (!tabs[k]) return;
+        if (k === filter) {
+          tabs[k].className = 'filter-tab px-6 py-2.5 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase shadow-sm transition';
+        } else {
+          tabs[k].className = 'filter-tab px-6 py-2.5 rounded-full bg-white border border-neutral-300 text-neutral-700 hover:border-black text-xs font-semibold tracking-wider uppercase transition';
+        }
+      });
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        if (filter === 'all') {
+          card.style.display = 'flex';
+        } else if (filter === 'web') {
+          card.style.display = card.classList.contains('web-project') ? 'flex' : 'none';
+        } else if (filter === 'landing') {
+          card.style.display = card.classList.contains('landing-project') ? 'flex' : 'none';
+        }
+      });
+    }
+
+    // Services Accordion Logic
+    function toggleService(index) {
+      const items = document.querySelectorAll('.accordion-item');
+      items.forEach((item, i) => {
+        const badge = item.querySelector('.item-badge');
+        const title = item.querySelector('.item-title');
+        const icon = item.querySelector('.item-icon');
+        const iconSvg = icon.querySelector('svg');
+
+        if (i === index) {
+          const isActive = item.classList.contains('active');
+          if (isActive && items.length > 1) {
+            // Optional: toggle off or keep active
+          } else {
+            item.classList.add('active', 'bg-black', 'text-white', 'shadow-xl', 'scale-[1.01]');
+            item.classList.remove('bg-white', 'text-neutral-800', 'border-neutral-300');
+            badge.className = 'item-badge w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center text-xs font-medium text-neutral-300';
+            title.className = 'item-title text-xs md:text-sm font-bold tracking-widest uppercase text-white';
+            icon.className = 'item-icon w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center transition-transform rotate-90';
+            iconSvg.className = 'w-3.5 h-3.5 text-white';
+          }
+        } else {
+          item.classList.remove('active', 'bg-black', 'text-white', 'shadow-xl', 'scale-[1.01]');
+          item.classList.add('bg-white', 'text-neutral-800', 'border-neutral-300');
+          badge.className = 'item-badge w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-xs font-medium text-neutral-700';
+          title.className = 'item-title text-xs md:text-sm font-bold tracking-widest uppercase text-neutral-800';
+          icon.className = 'item-icon w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center transition-transform rotate-0';
+          iconSvg.className = 'w-3.5 h-3.5 text-neutral-700';
+        }
+      });
+    }
+
+    function selectService(index) {
+      const items = document.querySelectorAll('.accordion-item');
+      if (items && items[index]) {
+        toggleService(index);
+      }
+    }
+
+    function bookSpecificService(serviceName) {
+      openContactModal();
+      const select = document.getElementById('contact-service');
+      if (select) {
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].text.includes(serviceName) || select.options[i].value.includes(serviceName)) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    }
+
+    // Modal Handlers
+    function openProjectModal(itemOrKey) {
+      let data = null;
+      if (typeof itemOrKey === 'object' && itemOrKey !== null) {
+        data = itemOrKey;
+      } else {
+        data = projectsData[itemOrKey];
+      }
+      if (!data) return;
+
+      const category = data.subtitle || data.category || 'FEATURED PROJECT';
+      const title = data.title || 'PROJECT DETAILS';
+      document.getElementById('modal-project-category').innerText = category;
+      document.getElementById('modal-project-title').innerText = title;
+      
+      let html = '';
+      if (data.src) {
+        html += `
+          <div class="w-full h-52 sm:h-64 rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-100 shadow-inner">
+            <img src="${data.src}" alt="${data.alt || title}" class="w-full h-full object-cover object-top" />
+          </div>
+        `;
+      }
+      if (data.description) {
+        html += `<p class="text-neutral-600 leading-relaxed font-normal text-sm sm:text-base text-center max-w-xl mx-auto">${data.description}</p>`;
+      }
+      if (data.stats) {
+        html += `
+          <div class="bg-neutral-50 p-4 rounded-2xl border border-neutral-200 text-center">
+            <p class="text-[11px] font-bold uppercase tracking-wider text-neutral-500 mb-1">Key Highlights</p>
+            <p class="text-xs text-neutral-800 font-medium">${data.stats}</p>
+          </div>
+        `;
+      }
+      if (data.deliverables && data.deliverables.length) {
+        html += `
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-black mb-2 text-center">Key Deliverables</h4>
+            <ul class="list-disc pl-5 space-y-1 text-xs text-neutral-600 max-w-md mx-auto">
+              ${data.deliverables.map(d => `<li>${d}</li>`).join('')}
+            </ul>
+          </div>
+        `;
+      }
+      if (data.tools && data.tools.length) {
+        html += `
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-black mb-2 text-center">Technologies & Stack</h4>
+            <div class="flex flex-wrap justify-center gap-2">
+              ${data.tools.map(t => `<span class="px-3 py-1 bg-neutral-100 border border-neutral-200 text-neutral-800 text-[10px] font-semibold rounded-full uppercase">${t}</span>`).join('')}
+            </div>
+          </div>
+        `;
+      }
+      if (data.link) {
+        html += `
+          <div class="pt-2 flex justify-center items-center">
+            <a href="${data.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-black text-white text-xs font-bold uppercase tracking-wider hover:bg-neutral-800 transition-all shadow-md hover:shadow-xl hover:scale-105 active:scale-95">
+              Visit Live Website ↗
+            </a>
+          </div>
+        `;
+      }
+
+      document.getElementById('modal-project-body').innerHTML = html;
+
+      const modal = document.getElementById('project-modal');
+      const card = document.getElementById('project-modal-card');
+      if (!modal || !card) return;
+
+      modal.classList.remove('pointer-events-none');
+      void modal.offsetWidth; // Force reflow so transition starts cleanly
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0');
+        card.classList.remove('opacity-0', 'scale-[0.94]', 'translate-y-4');
+        card.classList.add('opacity-100', 'scale-100', 'translate-y-0');
+      });
+    }
+    window.openProjectModal = openProjectModal;
+
+    function closeProjectModal() {
+      const modal = document.getElementById('project-modal');
+      const card = document.getElementById('project-modal-card');
+      if (!modal || !card) return;
+
+      modal.classList.add('opacity-0');
+      card.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
+      card.classList.add('opacity-0', 'scale-[0.94]', 'translate-y-4');
+      setTimeout(() => {
+        if (modal.classList.contains('opacity-0')) {
+          modal.classList.add('pointer-events-none');
+        }
+      }, 400);
+    }
+
+    function openContactModal() {
+      const modal = document.getElementById('contact-modal');
+      const card = document.getElementById('contact-modal-card');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-95');
+      card.classList.add('scale-100');
+    }
+
+    function closeContactModal() {
+      const modal = document.getElementById('contact-modal');
+      const card = document.getElementById('contact-modal-card');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-100');
+      card.classList.add('scale-95');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('project-modal');
+        if (modal && !modal.classList.contains('pointer-events-none')) {
+          closeProjectModal();
+        }
+      }
+    });
+
+    function submitContactForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value;
+      const service = document.getElementById('contact-service').value;
+      closeContactModal();
+      showToast(`Thank you, ${name}! Your inquiry for "${service}" has been received.`);
+      document.getElementById('contact-form').reset();
+    }
+
+    // Cart Handlers
+    function addToCart(title, price) {
+      cart.push({ title, price, id: Date.now() });
+      updateCartUI();
+      showToast(`Added ${title} ($${price.toFixed(2)}) to your bag.`);
+    }
+
+    function updateCartUI() {
+      const badge = document.getElementById('cart-badge');
+      if (cart.length > 0) {
+        badge.innerText = cart.length;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+
+      const list = document.getElementById('cart-items');
+      const totalEl = document.getElementById('cart-total');
+      if (cart.length === 0) {
+        list.innerHTML = `<p class="text-xs text-neutral-400 text-center py-8">Your bag is empty.</p>`;
+        totalEl.innerText = '$0.00';
+      } else {
+        let total = 0;
+        list.innerHTML = cart.map((item, idx) => {
+          total += item.price;
+          return `
+            <div class="flex items-center justify-between p-3 bg-neutral-50 rounded-xl border border-neutral-200">
+              <div>
+                <p class="text-xs font-bold text-black uppercase">${item.title}</p>
+                <p class="text-xs text-neutral-500 font-mono">$${item.price.toFixed(2)}</p>
+              </div>
+              <button onclick="removeFromCart(${idx})" class="text-xs text-red-500 hover:underline">Remove</button>
+            </div>
+          `;
+        }).join('');
+        totalEl.innerText = `$${total.toFixed(2)}`;
+      }
+    }
+
+    function removeFromCart(idx) {
+      cart.splice(idx, 1);
+      updateCartUI();
+    }
+
+    function openCartModal() {
+      updateCartUI();
+      const modal = document.getElementById('cart-modal');
+      const card = document.getElementById('cart-modal-card');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-95');
+      card.classList.add('scale-100');
+    }
+
+    function closeCartModal() {
+      const modal = document.getElementById('cart-modal');
+      const card = document.getElementById('cart-modal-card');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-100');
+      card.classList.add('scale-95');
+    }
+
+    function checkoutCart() {
+      if (cart.length === 0) {
+        showToast('Your bag is currently empty.');
+        return;
+      }
+      closeCartModal();
+      showToast('Redirecting to secure checkout...');
+      setTimeout(() => {
+        cart = [];
+        updateCartUI();
+        showToast('Order confirmed! Thank you for supporting designer craftsmanship.');
+      }, 1000);
+    }
+
+    // Interactive micro-interactions
+    function toggleHeart(btn) {
+      if (btn.innerText === '♡') {
+        btn.innerText = '♥';
+        btn.classList.add('text-red-500');
+        btn.classList.remove('text-neutral-400');
+        showToast('Added Wood Chair to saved items.');
+      } else {
+        btn.innerText = '♡';
+        btn.classList.remove('text-red-500');
+        btn.classList.add('text-neutral-400');
+      }
+    }
+
+    function triggerSolarAction() {
+      const kwh = document.getElementById('solar-kwh');
+      if (kwh) {
+        kwh.innerText = (parseFloat(kwh.innerText) + 0.8).toFixed(1) + ' kWh';
+      }
+      showToast('Live solar telemetry synchronized (+0.8 kWh).');
+    }
+
+    function copyContactEmail() {
+      const email = 'hello@example.com';
+      navigator.clipboard?.writeText(email);
+      showToast('Copied email: hello@example.com');
+    }
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      const content = document.getElementById('mobile-drawer-content');
+      const isOpen = !drawer.classList.contains('pointer-events-none');
+
+      if (isOpen) {
+        drawer.classList.add('opacity-0', 'pointer-events-none');
+        content.classList.add('translate-x-full');
+      } else {
+        drawer.classList.remove('opacity-0', 'pointer-events-none');
+        content.classList.remove('translate-x-full');
+      }
+    }
+
+    // Toast notification helper
+    function showToast(message) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'bg-black text-white px-5 py-3 rounded-full text-xs font-semibold shadow-2xl flex items-center gap-2 transform translate-y-4 opacity-0 transition-all duration-300 pointer-events-auto border border-neutral-700';
+      toast.innerHTML = `<span>●</span><span>${message}</span>`;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-4', 'opacity-0');
+      }, 10);
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-4', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+
+
+    // Initialize application
+    function initApp() {
+
+      const sections = document.querySelectorAll('section[id], main[id]');
+      const navLinks = {
+        'home': document.getElementById('nav-home'),
+        'about': document.getElementById('nav-about'),
+        'experience': document.getElementById('nav-experience'),
+        'projects': document.getElementById('nav-projects'),
+        'services': document.getElementById('nav-services')
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            Object.keys(navLinks).forEach(k => {
+              if (navLinks[k]) {
+                if (k === id) {
+                  navLinks[k].classList.add('border-neutral-300', 'text-black');
+                  navLinks[k].classList.remove('border-transparent', 'text-neutral-600');
+                } else {
+                  navLinks[k].classList.remove('border-neutral-300', 'text-black');
+                  navLinks[k].classList.add('border-transparent', 'text-neutral-600');
+                }
+              }
+            });
+          }
+        });
+      }, { rootMargin: '-20% 0px -60% 0px' });
+
+      sections.forEach(s => observer.observe(s));
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+      initApp();
+    }
+  </script>
+
+  <!-- FlexCarousel Initialization (React Bits Component Engine) -->
+  <script type="module">
+    import { initFlexCarousel, DEFAULT_ITEMS } from './flex-carousel.js';
+
+    function startCarousel() {
+      const container = document.getElementById('flex-carousel-container');
+      if (container) {
+        window.flexCarouselInstance = initFlexCarousel(container, {
+          items: DEFAULT_ITEMS,
+          preset: 'liquid',
+          intro: 'rise',
+          cardHeight: 0.5,
+          gap: 12,
+          squeeze: 0.2,
+          focusOnClick: true,
+          captions: true,
+          onSelect: (index, item) => {
+            if (window.openProjectModal) {
+              window.openProjectModal(item);
+            }
+          }
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', startCarousel);
+    } else {
+      startCarousel();
+    }
+  </script>
+
+  <!-- WorksWheel 3D Drum Reel Initialization -->
+  <script type="module">
+    import { initWorksWheel, DEFAULT_WORKS } from './works-wheel.js';
+
+    function startWorksWheel() {
+      const container = document.getElementById('works-wheel-container');
+      if (container) {
+        const wheelInstance = initWorksWheel(container, {
+          items: DEFAULT_WORKS,
+          label: "Works '26",
+          action: "View",
+          onSelect: (index, item) => {
+            if (window.openProjectModal) {
+              window.openProjectModal(item);
+            }
+          }
+        });
+        window.worksWheelInstance = wheelInstance;
+
+        const prevBtn = document.getElementById('works-wheel-prev-btn');
+        const nextBtn = document.getElementById('works-wheel-next-btn');
+        if (prevBtn) prevBtn.addEventListener('click', () => wheelInstance.prev());
+        if (nextBtn) nextBtn.addEventListener('click', () => wheelInstance.next());
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', startWorksWheel);
+    } else {
+      startWorksWheel();
+    }
+  </script>
+  <script type="module" src="./scroll-expand-media.js"></script>
+  <script type="module" src="./experience-section.js"></script>
+</body>
+</html>
