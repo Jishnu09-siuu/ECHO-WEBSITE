@@ -2,7 +2,6 @@
 
 <div align="center">
 
-  [![Live Site](https://img.shields.io/badge/Live_Portfolio-ECHO-0D0D0D?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/Jishnu09-siuu/ECHO-WEBSITE)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v3-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
   [![WebGL](https://img.shields.io/badge/Graphics-OGL_WebGL-black?style=for-the-badge&logo=webgl&logoColor=white)](https://github.com/oframe/ogl)
   [![License](https://img.shields.io/badge/License-MIT-000000?style=for-the-badge)](LICENSE)
